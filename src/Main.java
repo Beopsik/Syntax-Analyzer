@@ -14,15 +14,15 @@ public class Main {
             System.exit(0);
         }*/
 
-        /*File file = new File("C:\\Users\\문법식\\Desktop\\개인공부\\GitKraken\\Syntax-Analyzer\\test.txt");
+        File file1 = new File("C:\\Users\\문법식\\Desktop\\개인공부\\GitKraken\\Syntax-Analyzer\\test.txt");
         //File file = new File(args[0]);
 
         //Init lexical_analyzer.dfa.lexical_analyzer.LexicalAnalyzer
-        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(file);
-        lexicalAnalyzer.execute();*/
+        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(file1);
+        lexicalAnalyzer.execute();
 
-        File file = new File("C:\\Users\\문법식\\Desktop\\개인공부\\GitKraken\\Syntax-Analyzer\\output.txt");
-        SyntaxAnalyzer syntaxAnalyzer=new SyntaxAnalyzer(file);
+        File file2 = new File("C:\\Users\\문법식\\Desktop\\개인공부\\GitKraken\\Syntax-Analyzer\\output.txt");
+        SyntaxAnalyzer syntaxAnalyzer=new SyntaxAnalyzer(file2);
         syntaxAnalyzer.execute();
     }
 }

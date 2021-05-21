@@ -138,6 +138,10 @@ public class SyntaxAnalyzer {
                         break;
                 }
             }
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("Terminals", "$");
+            jsonObject.put("Content", "acc");
+            inputJsonFileArray.add(jsonObject);
             writer.write(inputJsonFileArray.toJSONString());
             writer.flush();
             writer.close();
