@@ -1,0 +1,13 @@
+vtype
+id
+lparen
+rparen
+lbrace
+id
+assign
+literal
+semi
+return
+literal
+semi
+rbrace

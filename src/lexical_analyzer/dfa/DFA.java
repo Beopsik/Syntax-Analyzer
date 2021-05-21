@@ -171,7 +171,7 @@ public class DFA {
                     previousToken = result.getKey();
 
                     if(result.getKey()!="WHITESPACE")
-                        pw.println("<" + result.getKey() + ", " + result.getValue() + ">");
+                        pw.println(result.getKey() + ":" + result.getValue());
 
                     //Initialize current state to start state and clear the value of token
                     for (int k = 0; k < TOKEN_NUM; k++) {
@@ -190,7 +190,7 @@ public class DFA {
                     previousToken = result.getKey();
 
                     if(result.getKey()!="WHITESPACE")
-                        pw.println("<" + result.getKey() + ", " + result.getValue() + ">");
+                        pw.println(result.getKey() + ":" + result.getValue());
                 }
             }
         }
