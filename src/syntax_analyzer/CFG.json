@@ -1,0 +1,162 @@
+[
+  {
+    "left":"S`",
+    "right": "CODE"
+  },
+  {
+    "left":"CODE",
+    "right":"VDECL CODE"
+  },
+  {
+    "left":"CODE",
+    "right":"FDECL CODE"
+  },
+  {
+    "left":"CODE",
+    "right":"CDECL CODE"
+  },
+  {
+    "left":"CODE",
+    "right":""
+  },
+  {
+    "left":"VDECL",
+    "right":"vtype id semi"
+  },
+  {
+    "left":"VDECL",
+    "right":"vtype ASSIGN semi"
+  },
+  {
+    "left":"ASSIGN",
+    "right":"id assign RHS"
+  },
+  {
+    "left":"RHS",
+    "right":"EXPR"
+  },
+  {
+    "left":"RHS",
+    "right":"literal"
+  },
+  {
+    "left":"RHS",
+    "right":"character"
+  },
+  {
+    "left":"RHS",
+    "right":"boolstr"
+  },
+  {
+    "left":"EXPR",
+    "right":"TEXPR addsub EXPR"
+  },
+  {
+    "left":"EXPR",
+    "right":"TEXPR"
+  },
+  {
+    "left":"TEXPR",
+    "right":"EXPR` multdiv TEXPR"
+  },
+  {
+    "left":"TEXPR",
+    "right":"EXPR`"
+  },
+  {
+    "left":"EXPR`",
+    "right":"lparen EXPR rparen"
+  },
+  {
+    "left":"EXPR`",
+    "right":"id"
+  },
+  {
+    "left":"EXPR`",
+    "right":"num"
+  },
+  {
+    "left":"FDECL",
+    "right":"vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace"
+  },
+  {
+    "left":"ARG",
+    "right":"vtype id MOREARGS"
+  },
+  {
+    "left":"ARG",
+    "right":""
+  },
+  {
+    "left":"MOREARGS",
+    "right":"comma vtype id MOREARGS"
+  },
+  {
+    "left":"MOREARGS",
+    "right":""
+  },
+  {
+    "left":"BLOCK",
+    "right":"STMT BLOCK"
+  },
+  {
+    "left":"BLOCK",
+    "right":""
+  },
+  {
+    "left":"STMT",
+    "right":"VDECL"
+  },
+  {
+    "left":"STMT",
+    "right":"ASSIGN semi"
+  },
+  {
+    "left":"STMT",
+    "right":"if lparen COND rparen lbrace BLOCK rbrace ELSE"
+  },
+  {
+    "left":"STMT",
+    "right":"while lparen COND rparen lbrace BLOCK rbrace"
+  },
+  {
+    "left":"COND",
+    "right":"COND comp COND`"
+  },
+  {
+    "left":"COND",
+    "right":"COND`"
+  },
+  {
+    "left":"COND`",
+    "right":"boolstr"
+  },
+  {
+    "left":"ELSE",
+    "right":"else lbrace BLOCK rbrace"
+  },
+  {
+    "left":"ELSE",
+    "right":""
+  },
+  {
+    "left":"RETURN",
+    "right":"return RHS semi"
+  },
+  {
+    "left":"CDECL",
+    "right":"class id lbrace ODECL rbrace"
+  },
+  {
+    "left":"ODECL",
+    "right":"VDECL ODECL"
+  },
+  {
+    "left":"ODECL",
+    "right":"FDECL ODECL"
+  },
+  {
+    "left":"ODECL",
+    "right":""
+  }
+]

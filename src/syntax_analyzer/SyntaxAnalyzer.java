@@ -133,6 +133,9 @@ public class SyntaxAnalyzer {
                         jsonObject.put("Content", inputStr[1]);
                         inputJsonFileArray.add(jsonObject);
                         break;
+                    default:
+                        System.out.println("Some error");
+                        break;
                 }
             }
             writer.write(inputJsonFileArray.toJSONString());
