@@ -16,7 +16,7 @@ public class SLRparsing {
     JSONObject InputObject = new JSONObject();
     Stack<Integer> stack = new Stack<>();
     String nextInputSymbol = "";
-    String ErrorPostionStr = "";
+    String ErrorPositionStr = "";
     int splitter;
 
     //삭제할 것
@@ -105,11 +105,11 @@ public class SLRparsing {
     }
 
     public void InitErrorPosition(int index) {
-        ErrorPostionStr = "";
+        ErrorPositionStr = "";
         for (int i = index; i < index + 5; i++) {
             InputObject = (JSONObject) InputArray.get(i);
-            ErrorPostionStr = ErrorPostionStr.concat(InputObject.get("Content").toString());
-            ErrorPostionStr = ErrorPostionStr.concat(" ");
+            ErrorPositionStr = ErrorPositionStr.concat(InputObject.get("Content").toString());
+            ErrorPositionStr = ErrorPositionStr.concat(" ");
         }
     }
 
@@ -217,7 +217,7 @@ public class SLRparsing {
         if (SLRTableRow.get(inputSymbol).toString().length() == 0) {
             InitErrorPosition(splitter);
             System.out.println("Reject");
-            System.out.println("Error position:" + ErrorPostionStr+"...");
+            System.out.println("Error position:" + ErrorPositionStr+"...");
             System.out.println("SyntaxError: Unexpected token");
             System.exit(0);
         }
