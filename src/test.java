@@ -1,5 +1,5 @@
 class test {
-    int main() {
+    int main(int num1, String str) {
         int _aa_a = -1;
         char b_b123 = 'c';
         boolean __cc = true;
@@ -14,5 +14,12 @@ class test {
         }
 
         return 0;
+    }
+
+    int function(int num){
+        int a=3;
+        int b=4;
+        num=a+b;
+        return num;
     }
 }
