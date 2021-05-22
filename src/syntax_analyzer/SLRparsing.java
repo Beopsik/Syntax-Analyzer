@@ -12,13 +12,13 @@ public class SLRparsing {
     JSONObject SLRTableRow = new JSONObject();
     JSONArray CFGArray = new JSONArray();
     JSONObject CFGObject = new JSONObject();
-
-    Stack<Integer> stack = new Stack<>();
-    int splitter;
-    String nextInputSymbol;
     JSONArray InputArray = new JSONArray();
     JSONObject InputObject = new JSONObject();
+    Stack<Integer> stack = new Stack<>();
+    String nextInputSymbol;
+    int splitter;
 
+    //삭제할 것
     String ShowInputString = "";
 
     public SLRparsing() {
