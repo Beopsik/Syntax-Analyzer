@@ -150,7 +150,8 @@
     "size": 7
   },
   {
-    "COND": "COND comp COND`",
+    "left":"COND",
+    "right":"COND comp COND`",
     "size": 3
   },
   {
