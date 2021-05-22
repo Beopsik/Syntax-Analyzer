@@ -1,5 +1,4 @@
 import lexical_analyzer.LexicalAnalyzer;
-import syntax_analyzer.SLRparsing;
 import syntax_analyzer.SyntaxAnalyzer;
 
 import java.io.*;
@@ -14,14 +13,13 @@ public class Main {
             System.exit(0);
         }*/
 
-        File file1 = new File("C:\\Users\\문법식\\Desktop\\개인공부\\GitKraken\\Syntax-Analyzer\\test.txt");
         //File file = new File(args[0]);
-
+        File file1 = new File("./test.txt");
         //Init lexical_analyzer.dfa.lexical_analyzer.LexicalAnalyzer
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(file1);
         lexicalAnalyzer.execute();
 
-        File file2 = new File("C:\\Users\\문법식\\Desktop\\개인공부\\GitKraken\\Syntax-Analyzer\\output.txt");
+        File file2 = new File("./output.txt");
         SyntaxAnalyzer syntaxAnalyzer=new SyntaxAnalyzer(file2);
         syntaxAnalyzer.execute();
     }
