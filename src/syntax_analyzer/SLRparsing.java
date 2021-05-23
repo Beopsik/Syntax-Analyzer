@@ -17,7 +17,6 @@ public class SLRparsing {
     Stack<String> InputStack=new Stack<>();//삭제할 것
     Stack<Integer> stack = new Stack<>();
     String nextInputSymbol = "";
-    String ErrorPositionStr = "";
     int splitter;
     String ShowInputString = "";//삭제할 것
 
@@ -108,13 +107,34 @@ public class SLRparsing {
         }
     }
 
-    public void InitErrorPosition(int index) {
-        ErrorPositionStr = "";
-        for (int i = index; i < index + 5; i++) {
-            InputObject = (JSONObject) InputArray.get(i);
+    public void ShowErrorPosition(int index) {
+        String ErrorPositionStr = "";
+        String UnexpectedToken;
+        int start;
+
+        if(index<5)
+            start=0;
+        else
+            start=index-5;
+
+        while (start < index + 10) {
+            if(start==InputArray.size()-1)
+                break;
+            if (start==index) {
+                ErrorPositionStr = ErrorPositionStr.concat("->");
+            }
+
+            InputObject = (JSONObject) InputArray.get(start++);
             ErrorPositionStr = ErrorPositionStr.concat(InputObject.get("Content").toString());
             ErrorPositionStr = ErrorPositionStr.concat(" ");
         }
+
+        InputObject=(JSONObject) InputArray.get(index);
+        UnexpectedToken=InputObject.get("Content").toString();
+
+        System.out.println("Reject");
+        System.out.println("Error position:" + ErrorPositionStr+"...");
+        System.out.println("SyntaxError: Unexpected token:"+UnexpectedToken);
     }
 
     //삭제할것--------------------------------------------------
@@ -139,12 +159,8 @@ public class SLRparsing {
 
     public String MakeDecision(int row, String inputSymbol) {
         SLRTableRow = (JSONObject) SLRTable.get(row);
-
         if (SLRTableRow.get(inputSymbol).toString().length() == 0) {
-            InitErrorPosition(splitter);
-            System.out.println("Reject");
-            System.out.println("Error position:" + ErrorPositionStr+"...");
-            System.out.println("SyntaxError: Unexpected token");
+            ShowErrorPosition(splitter);
             System.exit(0);
         }
         return SLRTableRow.get(inputSymbol).toString();
