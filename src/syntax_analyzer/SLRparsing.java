@@ -14,13 +14,12 @@ public class SLRparsing {
     JSONObject CFGObject = new JSONObject();
     JSONArray InputArray = new JSONArray();
     JSONObject InputObject = new JSONObject();
+    Stack<String> InputStack=new Stack<>();//삭제할 것
     Stack<Integer> stack = new Stack<>();
     String nextInputSymbol = "";
     String ErrorPositionStr = "";
     int splitter;
-
-    //삭제할 것
-    String ShowInputString = "";
+    String ShowInputString = "";//삭제할 것
 
     public SLRparsing() {
         stack.push(0);
@@ -40,6 +39,7 @@ public class SLRparsing {
             nextInputSymbol = InputObject.get("Terminals").toString();
             ShowStack();
             System.out.println("Input Symbol:" + nextInputSymbol);
+            InputStack.push(nextInputSymbol);
             decision = MakeDecision(stack.peek(), nextInputSymbol);
             if (decision.equals("acc")) {
                 System.out.println("Accept");
@@ -50,13 +50,17 @@ public class SLRparsing {
                 case 'r' -> {
                     CFGObject = (JSONObject) CFGArray.get(Integer.parseInt(decision.substring(1)));
                     int CFGSize = Integer.parseInt(CFGObject.get("size").toString());
-                    for (int i = 0; i < CFGSize; i++)
+                    for (int i = 0; i < CFGSize; i++) {
                         stack.pop();
+                        InputStack.pop();
+                    }
+                    InputStack.pop();
                     ShowStack();
                     System.out.println("Replace[left]:" + CFGObject.get("left").toString() + ", Replace[right]:" + CFGObject.get("right").toString());
                     String GOTO = MakeDecision(stack.peek(), CFGObject.get("left").toString());
                     System.out.println();
                     stack.push(Integer.parseInt(GOTO));
+                    InputStack.push(CFGObject.get("left").toString());
                 }
                 case 's' -> {
                     System.out.println();
@@ -123,8 +127,11 @@ public class SLRparsing {
     }
 
     public void ShowStack() {
+        int j=0;
         for (int i = 0; i < stack.size(); i++) {
             System.out.print(stack.elementAt(i) + " ");
+            if(j<InputStack.size())
+                System.out.print(InputStack.elementAt(j++)+" ");
         }
         System.out.println();
     }
