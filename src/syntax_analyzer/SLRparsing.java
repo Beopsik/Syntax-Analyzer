@@ -4,7 +4,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Stack;
 
 public class SLRparsing {
@@ -106,35 +109,37 @@ public class SLRparsing {
             e.printStackTrace();
         }
     }
+    public void ErrorMessage(int index){
+        File inputFile = new File("./test.txt");
+        String getOneLine="";
+        String unexpectedToken;
+        int findErrorPosition=0;
+        int findErrorLine=0;
 
-    public void ShowErrorPosition(int index) {
-        String ErrorPositionStr = "";
-        String UnexpectedToken;
-        int start;
-
-        if(index<5)
-            start=0;
-        else
-            start=index-5;
-
-        while (start < index + 10) {
-            if(start==InputArray.size()-1)
-                break;
-            if (start==index) {
-                ErrorPositionStr = ErrorPositionStr.concat("->");
+        try {
+            BufferedReader br=new BufferedReader(new FileReader(inputFile));
+            while(findErrorPosition<=index){
+                getOneLine=br.readLine();
+                while(true){
+                    InputObject=(JSONObject) InputArray.get(findErrorPosition);
+                    if(getOneLine.contains(InputObject.get("Content").toString())){
+                        findErrorPosition++;
+                    }else{
+                        findErrorLine++;
+                        break;
+                    }
+                }
             }
-
-            InputObject = (JSONObject) InputArray.get(start++);
-            ErrorPositionStr = ErrorPositionStr.concat(InputObject.get("Content").toString());
-            ErrorPositionStr = ErrorPositionStr.concat(" ");
+        }catch (IOException e){
+            e.printStackTrace();
         }
 
         InputObject=(JSONObject) InputArray.get(index);
-        UnexpectedToken=InputObject.get("Content").toString();
+        unexpectedToken=InputObject.get("Content").toString();
 
-        System.out.println("Reject");
-        System.out.println("Error position: ... " + ErrorPositionStr+"...");
-        System.out.println("SyntaxError: Unexpected token: "+UnexpectedToken);
+        System.out.println("\n\nReject");
+        System.out.println("SyntaxError:    Unexpected token -> "+unexpectedToken);
+        System.out.println("Error at:"+getOneLine+"     (test.txt: Line "+findErrorLine+")");
     }
 
     //삭제할것--------------------------------------------------
@@ -160,7 +165,7 @@ public class SLRparsing {
     public String MakeDecision(int row, String inputSymbol) {
         SLRTableRow = (JSONObject) SLRTable.get(row);
         if (SLRTableRow.get(inputSymbol).toString().length() == 0) {
-            ShowErrorPosition(splitter);
+            ErrorMessage(splitter);
             System.exit(0);
         }
         return SLRTableRow.get(inputSymbol).toString();
