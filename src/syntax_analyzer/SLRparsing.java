@@ -133,8 +133,8 @@ public class SLRparsing {
         UnexpectedToken=InputObject.get("Content").toString();
 
         System.out.println("Reject");
-        System.out.println("Error position:" + ErrorPositionStr+"...");
-        System.out.println("SyntaxError: Unexpected token:"+UnexpectedToken);
+        System.out.println("Error position: ... " + ErrorPositionStr+"...");
+        System.out.println("SyntaxError: Unexpected token: "+UnexpectedToken);
     }
 
     //삭제할것--------------------------------------------------
