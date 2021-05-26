@@ -7,29 +7,38 @@ import java.io.*;
 
 public class SyntaxAnalyzer {
     private final File file;
+    private final String lexicalInputFileName;
 
-    public SyntaxAnalyzer(File file) {
+    public SyntaxAnalyzer(String lexicalInputFileName, File file) {
+        this.lexicalInputFileName = lexicalInputFileName;
         this.file = file;
     }
 
     public void execute() {
         makeInput();
-        SLRparsing slrparsing = new SLRparsing();
+        SLRparsing slrparsing = new SLRparsing(lexicalInputFileName);
         slrparsing.run();
     }
 
+    //Function for making input file for syntax analyzer
     public void makeInput() {
         String getOneLine;
         String[] inputStr;
 
         try {
-            FileWriter writer = new FileWriter("./src/syntax_analyzer/input.json");
+            //Write the modified lexical analyzer output to syntax analyzer input file
+            FileWriter writer = new FileWriter("./input.json");
+
+            //Read Lexical Analyzer output file
             BufferedReader br = new BufferedReader(new FileReader(file));
             JSONArray inputJsonFileArray = new JSONArray();
 
+            //Read one line at a time from the Lexical Analyzer output file and
             while ((getOneLine = br.readLine()) != null) {
                 JSONObject jsonObject = new JSONObject();
                 inputStr = doSplit(getOneLine);
+
+                //Modify the lexical analyzer output file to a form that the syntax analyzer can use
                 switch (inputStr[0]) {
                     case "ARITHMETICOPERATOR" -> {
                         if (inputStr[1].equals("+") || inputStr[1].equals("-"))
@@ -145,6 +154,7 @@ public class SyntaxAnalyzer {
         }
     }
 
+    //Based on the colon, store the left as terminal in the 0th index and the right as content in the 1st index. (ex. VARIABLETYPE : char)
     public String[] doSplit(String str) {
         String[] result = new String[2];
         int splitIndex = str.indexOf(":");

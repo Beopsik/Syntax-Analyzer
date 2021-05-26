@@ -1,0 +1,202 @@
+[
+  {
+    "left":"S`",
+    "right": "CODE",
+    "size": 1
+  },
+  {
+    "left":"CODE",
+    "right":"VDECL CODE",
+    "size": 2
+  },
+  {
+    "left":"CODE",
+    "right":"FDECL CODE",
+    "size": 2
+  },
+  {
+    "left":"CODE",
+    "right":"CDECL CODE",
+    "size": 2
+  },
+  {
+    "left":"CODE",
+    "right":"",
+    "size": 0
+  },
+  {
+    "left":"VDECL",
+    "right":"vtype id semi",
+    "size": 3
+  },
+  {
+    "left":"VDECL",
+    "right":"vtype ASSIGN semi",
+    "size": 3
+  },
+  {
+    "left":"ASSIGN",
+    "right":"id assign RHS",
+    "size": 3
+  },
+  {
+    "left":"RHS",
+    "right":"EXPR",
+    "size": 1
+  },
+  {
+    "left":"RHS",
+    "right":"literal",
+    "size": 1
+  },
+  {
+    "left":"RHS",
+    "right":"character",
+    "size": 1
+  },
+  {
+    "left":"RHS",
+    "right":"boolstr",
+    "size": 1
+  },
+  {
+    "left":"EXPR",
+    "right":"TEXPR addsub EXPR",
+    "size": 3
+  },
+  {
+    "left":"EXPR",
+    "right":"TEXPR",
+    "size": 1
+  },
+  {
+    "left":"TEXPR",
+    "right":"EXPR` multdiv TEXPR",
+    "size": 3
+  },
+  {
+    "left":"TEXPR",
+    "right":"EXPR`",
+    "size": 1
+  },
+  {
+    "left":"EXPR`",
+    "right":"lparen EXPR rparen",
+    "size": 3
+  },
+  {
+    "left":"EXPR`",
+    "right":"id",
+    "size": 1
+  },
+  {
+    "left":"EXPR`",
+    "right":"num",
+    "size": 1
+  },
+  {
+    "left":"FDECL",
+    "right":"vtype id lparen ARG rparen lbrace BLOCK RETURN rbrace",
+    "size": 9
+  },
+  {
+    "left":"ARG",
+    "right":"vtype id MOREARGS",
+    "size": 3
+  },
+  {
+    "left":"ARG",
+    "right":"",
+    "size": 0
+  },
+  {
+    "left":"MOREARGS",
+    "right":"comma vtype id MOREARGS",
+    "size": 4
+  },
+  {
+    "left":"MOREARGS",
+    "right":"",
+    "size": 0
+  },
+  {
+    "left":"BLOCK",
+    "right":"STMT BLOCK",
+    "size": 2
+  },
+  {
+    "left":"BLOCK",
+    "right":"",
+    "size": 0
+  },
+  {
+    "left":"STMT",
+    "right":"VDECL",
+    "size": 1
+  },
+  {
+    "left":"STMT",
+    "right":"ASSIGN semi",
+    "size": 2
+  },
+  {
+    "left":"STMT",
+    "right":"if lparen COND rparen lbrace BLOCK rbrace ELSE",
+    "size": 8
+  },
+  {
+    "left":"STMT",
+    "right":"while lparen COND rparen lbrace BLOCK rbrace",
+    "size": 7
+  },
+  {
+    "left":"COND",
+    "right":"COND comp COND`",
+    "size": 3
+  },
+  {
+    "left":"COND",
+    "right":"COND`",
+    "size": 1
+  },
+  {
+    "left":"COND`",
+    "right":"boolstr",
+    "size": 1
+  },
+  {
+    "left":"ELSE",
+    "right":"else lbrace BLOCK rbrace",
+    "size": 4
+  },
+  {
+    "left":"ELSE",
+    "right":"",
+    "size": 0
+  },
+  {
+    "left":"RETURN",
+    "right":"return RHS semi",
+    "size": 3
+  },
+  {
+    "left":"CDECL",
+    "right":"class id lbrace ODECL rbrace",
+    "size": 5
+  },
+  {
+    "left":"ODECL",
+    "right":"VDECL ODECL",
+    "size": 2
+  },
+  {
+    "left":"ODECL",
+    "right":"FDECL ODECL",
+    "size": 2
+  },
+  {
+    "left":"ODECL",
+    "right":"",
+    "size": 0
+  }
+]
